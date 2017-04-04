@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default class InfoModal extends React.Component {
+
+export class InfoModal extends React.Component {
     onClose(event) {
         event.preventDefault();
         if (this.props.onClose) {
@@ -28,3 +30,9 @@ export default class InfoModal extends React.Component {
         );
     }
 }
+
+const mapStateToProps=state=>({
+    showInfoModal: state.showInfoModal
+});
+
+export default connect(mapStateToProps)(InfoModal);

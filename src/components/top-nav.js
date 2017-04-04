@@ -1,6 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default class TopNav extends React.Component {
+import {onInfo} from '../actions';
+
+
+export class TopNav extends React.Component {
     onNewGame(event) {
         event.preventDefault();
         if (this.props.onNewGame) {
@@ -10,9 +14,7 @@ export default class TopNav extends React.Component {
 
     onInfo(event) {
         event.preventDefault();
-        if (this.props.onInfo) {
-            this.props.onInfo();
-        }
+        this.props.dispatch(onInfo());
     }
 
     render() {
@@ -35,3 +37,12 @@ export default class TopNav extends React.Component {
     }
 };
 
+// const mapStateToProps = (state) => {
+//   // console.log(state); // state
+//     showInfoModal: state.showInfoModal
+// };
+// const mapStateToProps= state =>({
+
+// })
+
+export default connect()(TopNav);
